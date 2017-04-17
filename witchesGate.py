@@ -42,8 +42,9 @@ def main():
 
 
     def get_random_gif(directory):
-        gif = random.choice(os.listdir(_DATA_DIR + directory))
-        return _DATA_DIR + directory + '/' + gif
+        search_path = os.path.join(_DATA_DIR, directory)
+        gif = random.choice(os.listdir(search_path))
+        return os.path.join(search_path, gif)
 
 
     def post_status(content, media = None):
@@ -55,17 +56,17 @@ def main():
 
 
     def open_the_gates():
-        gif = get_random_gif('/open')
+        gif = get_random_gif('open')
         return post_status('#WitchesTown', media=gif)
 
 
     def close_the_gates():
-        gif = get_random_gif('/close')
+        gif = get_random_gif('close')
         return post_status('#witchesTown', media=gif)
 
 
     def show_the_rules():
-        with open(_DATA_DIR + '/rules.txt', 'r') as content_file:
+        with open(os.path.join(_DATA_DIR, 'rules.txt'), 'r') as content_file:
             content = content_file.read()
         return post_status(content)
 
