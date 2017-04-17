@@ -9,7 +9,7 @@ def main():
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--instance',
-                        required=False, default='mastodon.social')
+                        required=False, default='https://mastodon.social')
     parser.add_argument('-l', '--login',
                         required=False, default='')
     parser.add_argument('-p', '--password',
